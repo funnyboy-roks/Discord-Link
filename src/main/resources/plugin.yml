@@ -1,0 +1,19 @@
+name: Discord-Link
+version: ${project.version}
+main: com.funnyboyroks.discordlink.DiscordLink
+api-version: 1.16
+prefix: DiscordLink
+authors: [ funnyboy_roks ]
+description: A link between a Discord server and Minecraft
+commands:
+  discord:
+    usage: '/discord [reload]'
+    description: 'Get the Discord server link or reload the config'
+    permission: 'discord.getlink'
+permissions:
+  discord.getlink:
+    description: 'Permission for a user to get the link for the Discord server'
+    default: true
+  discord.reload:
+    description: 'Permission to reload the configuration(/discord reload)'
+    default: op

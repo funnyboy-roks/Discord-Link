@@ -1,0 +1,21 @@
+# Discord Link
+# funnyboy_roks (Source: https://github.com/funnyboy-roks/Discord-Link)
+# Need support or have questions? Discord Server: https://discord.gg/zRBqCTScMZ
+
+# Discord bot token
+# The token for the Discord bot that you intend to have on your Discord server
+# Tutorial for obtaining: https://github.com/funnyboy-roks/Discord-Link/wiki/Creating-a-Discord-Bot
+discord-token: 'YOUR TOKEN HERE'
+
+# Should the plugin show the prefix (defined in messages.yml) before every message?
+# This does not include chat messages from Discord -> ingame
+# Default: true
+use-prefix: true
+
+# Config information for the Verification feature
+# Read the comments for more info on each setting
+# This allows for more customised permissions and chat messages
+verification:
+  # Should the plugin use verification?
+  # Default: true
+  enabled: true

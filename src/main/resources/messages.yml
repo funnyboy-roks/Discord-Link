@@ -1,0 +1,25 @@
+# Discord Link
+# funnyboy_roks (Source: https://github.com/funnyboy-roks/Discord-Link)
+# Need support or have questions? Discord Server: https://discord.gg/zRBqCTScMZ
+
+# Colour codes (&#) work here, as well as paper's new custom formatting (https://docs.adventure.kyori.net/minimessage.html#format)
+
+prefix: '<blue>[<#5865F2>DL</#5865F2>]'
+
+
+# All messages for commands
+commands:
+
+  # If the player needs to be ingame to run the command
+  must-be-ingame: '&cYou must be in-game to use this command.'
+
+  # If the player needs to be on Discord to run the command
+  must-be-discord: '&cYou must be on Discord to use this command.'
+
+  # All of the messages that are related to the `/verify` command
+  verification:
+    none: true
+
+
+  # All of the messages that are related to the `/discord` command
+  discord:
