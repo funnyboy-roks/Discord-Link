@@ -28,6 +28,10 @@ public class LangUtils {
         sendMessage(sender, getValue(key));
     }
 
+    public static void sendMessageRaw(CommandSender sender, String message) {
+        sender.sendMessage(message);
+    }
+
     public static void needIngame(CommandSender sender) {
         sendMessage(sender, "commands.must-be-ingame", false);
     }

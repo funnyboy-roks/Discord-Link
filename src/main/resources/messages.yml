@@ -17,9 +17,12 @@ commands:
   must-be-discord: '&cYou must be on Discord to use this command.'
 
   # All of the messages that are related to the `/verify` command
+  # These are not used if verification is disabled in the config
   verification:
     none: true
 
 
   # All of the messages that are related to the `/discord` command
   discord:
+    # Replace `https://www.google.com` with your Discord invite link
+    link: '&6Join the Discord server: <aqua><click:open_url:https://www.google.com>https://www.google.com</click></aqua>'
