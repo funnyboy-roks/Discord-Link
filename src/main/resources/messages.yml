@@ -4,8 +4,26 @@
 
 # Colour codes (&#) work here, as well as paper's new custom formatting (https://docs.adventure.kyori.net/minimessage.html#format)
 
+# Valid replacements are marked with "VALID REPLACEMENTS:"
+# To use a replacement, put it between curly brackets
+# For example, the replacement NAME would be used as "{NAME}"
+
 prefix: '<blue>[<#5865F2>DL</#5865F2>]'
 
+# format for the main channel (discord -> ingame)
+# VALID REPLACEMENTS:
+  # DISPLAYNAME - The player's display name
+  # USERNAME - The player's plain username
+  # MESSAGE - The message, with formatting
+  # PLAIN_MESSAGE - The message, with no formatting, no matter what was done on Discord
+ingame-format: '<gray>DISCORD</gray> <aqua>{USERNAME}</aqua><white>: {MESSAGE}'
+# format for the main channel (ingame -> discord)
+# VALID REPLACEMENTS:
+  # DISPLAYNAME - The player's display name
+  # USERNAME - The player's plain username
+  # MESSAGE - The message, with formatting
+  # PLAIN_MESSAGE - The message, with no formatting, no matter what was done on Discord
+discord-format: '**{USERNAME}**: {MESSAGE}'
 
 # All messages for commands
 commands:

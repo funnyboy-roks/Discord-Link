@@ -2,6 +2,7 @@ package com.funnyboyroks.discordlink.data;
 
 import com.funnyboyroks.discordlink.DiscordLink;
 import com.funnyboyroks.discordlink.utils.Utils;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
 import java.io.File;
@@ -9,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.UUID;
 import java.util.logging.Level;
 
 public class DataHandler implements Listener {
@@ -105,7 +107,21 @@ public class DataHandler implements Listener {
     }
 
     public PlayerData getPlayer(long discordId) {
-        return null;
+        return pluginData
+            .getPlayerMap()
+            .values()
+            .stream()
+            .filter(p -> p.getDiscordId() == discordId)
+            .findFirst()
+            .orElse(null);
+    }
+
+    public PlayerData getPlayer(UUID uuid) {
+        return pluginData.getPlayerMap().get(uuid);
+    }
+
+    public PlayerData getPlayer(Player player) {
+        return getPlayer(player.getUniqueId());
     }
 
 }

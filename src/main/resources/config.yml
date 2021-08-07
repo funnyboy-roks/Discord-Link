@@ -12,6 +12,9 @@ discord-token: 'YOUR TOKEN HERE'
 # Default: true
 use-prefix: true
 
+# The main channel for ingame chat
+ingame-channel: 123
+
 # Config information for the Verification feature
 # Read the comments for more info on each setting
 # This allows for more customised permissions and chat messages
@@ -19,3 +22,32 @@ verification:
   # Should the plugin use verification?
   # Default: true
   enabled: true
+
+  # Channel for user verification, use `-1` to allow any channel
+  channel-id: 123
+
+
+# These are the custom channels that can be subscribed to and sent messages to.
+# You can add a channel name as the key, with the channel info as the value, like shown below
+# The permission to send messages into the channel (from minecraft) is `discord.channels.<name>.send`
+# and to listen to messages, the permission is `discord.channels.<name>.send`.
+# Do not put the ingame channel in this configuration section.
+channels:
+  123:
+    # The channel name
+    name: 'test'
+    # The format for messages sent from this channel to minecraft
+    # VALID REPLACEMENTS:
+      # DISPLAYNAME - The player's display name
+      # USERNAME - The player's plain username
+      # MESSAGE - The message, with formatting
+      # PLAIN_MESSAGE - The message, with no formatting, no matter what was done on Discord
+    mcFormat: '<gray>[Test]</gray> <bold>{DISPLAYNAME}</bold><white>: {MESSAGE}'
+    # The format for messages sent to this channel from minecraft
+    # You can use discord markdown syntax here
+    # VALID REPLACEMENTS:
+      # DISPLAYNAME - The player's display name
+      # USERNAME - The player's plain username
+      # MESSAGE - The message, with formatting
+      # PLAIN_MESSAGE - The message, with no formatting, no matter what was done in minecraft
+    discordFormat: '**{DISPLAYNAME}**: {MESSAGE}'

@@ -76,7 +76,6 @@ public class MarkdownProcessor {
      * @return markdown string
      */
     public static String fromComponent(Component component) {
-        System.out.println(LegacyComponentSerializer.legacySection().serialize(component).replaceAll(ChatColor.COLOR_CHAR + "", "&"));
         return mcToMarkdown(LegacyComponentSerializer.legacySection().serialize(component));
     }
 

@@ -1,6 +1,7 @@
 package com.funnyboyroks.discordlink.discord;
 
 import com.funnyboyroks.discordlink.DiscordLink;
+import com.funnyboyroks.discordlink.listeners.DiscordListeners;
 import com.funnyboyroks.discordlink.utils.Utils;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;

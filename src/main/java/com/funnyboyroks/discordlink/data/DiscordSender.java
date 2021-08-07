@@ -2,11 +2,13 @@ package com.funnyboyroks.discordlink.data;
 
 import com.funnyboyroks.discordlink.DiscordLink;
 import com.funnyboyroks.discordlink.discord.DiscordHandler;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.permissions.Permission;
@@ -23,6 +25,7 @@ public class DiscordSender implements CommandSender {
 
     private final TextChannel channel;
     private final User user;
+    private final Member member;
     private final Role[] roles;
     private final PlayerData player;
 
@@ -31,13 +34,18 @@ public class DiscordSender implements CommandSender {
     public DiscordSender(TextChannel channel, User user) {
         this.channel = channel;
         this.user = user;
-        this.roles = DiscordHandler.getGuild().getMember(user).getRoles().toArray(new Role[0]);
+        member = DiscordHandler.getGuild().getMember(user);
+        this.roles = member.getRoles().toArray(new Role[0]);
 
         this.player = DiscordLink.config().getBoolean("general.verification") ?
             DiscordLink.getDataHandler().getPlayer(user.getIdLong()) :
             null;
 
         operator = false;
+    }
+
+    public DiscordSender(MessageReceivedEvent event) {
+        this(event.getTextChannel(), event.getMember().getUser());
     }
 
     @Override
@@ -67,32 +75,39 @@ public class DiscordSender implements CommandSender {
 
     @Override
     public @NotNull String getName() {
-        return user.getName();
+        return player == null ? member.getEffectiveName() : player.getUsername();
+    }
+
+    public @NotNull String getDisplayName() {
+        if(player == null) {
+            return member.getEffectiveName();
+        }
+        return player.getPlayer() == null ? player.getUsername() : LegacyComponentSerializer.legacySection().serialize(player.getPlayer().displayName());
     }
 
     @Override
     public @NotNull Spigot spigot() {
-        return null;
+        return new CommandSender.Spigot();
     }
 
     @Override
     public boolean isPermissionSet(@NotNull String name) {
-        return false;
+        return operator;
     }
 
     @Override
     public boolean isPermissionSet(@NotNull Permission perm) {
-        return false;
+        return operator;
     }
 
     @Override
     public boolean hasPermission(@NotNull String name) {
-        return false;
+        return operator;
     }
 
     @Override
     public boolean hasPermission(@NotNull Permission perm) {
-        return false;
+        return operator;
     }
 
     @Override
