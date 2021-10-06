@@ -87,7 +87,7 @@ public class DiscordSender implements CommandSender {
 
     @Override
     public @NotNull Spigot spigot() {
-        return new CommandSender.Spigot();
+        return player.getPlayer() == null ? new Spigot() : player.getPlayer().spigot();
     }
 
     @Override
